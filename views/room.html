@@ -1,0 +1,52 @@
+<%include ./common/header.html%>
+    <div id="js_room_body">
+        <!--loading-->
+        <%include ./common/loading.html%>
+
+        <div class="room-content" v-if="!firstLoading">
+            <div class="room-header">
+                <i class="iconfont icon-back" @click="goBack"></i>
+                <span v-text="roomName"></span>
+                <i class="iconfont icon-icon"></i>
+            </div>
+            <div class="room-time" v-text="userNum"></div>
+            <ul class="room-list">
+                <li v-for="item in msgList">
+                    <div v-if="!item.isMyself">
+                        <i class="iconfont icon-content"></i>
+                        <div class="room-list-content">
+                            <div class="room-list-msg">
+                                <span class="msg-name" v-text="item.userName"></span>
+                                <span class="msg-time" v-text="item.time"></span>
+                            </div>
+                            <div class="msg-detail" v-text="item.msg"></div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <i class="iconfont icon-username icon-myself"></i>
+                        <div class="room-list-content content-myself">
+                            <div class="room-list-msg">
+                                <span class="msg-name">ME</span>
+                                <span class="msg-time" v-text="item.time"></span>
+                            </div>
+                            <div class="msg-detail" v-text="item.msg"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="send-box">
+                <input type="text" placeholder="写点什么" v-model="sendMsg">
+                <button type="button" @click="doSendMsg">发送</button>
+            </div>
+        </div>
+
+        <!--popup wrap-->
+        <%include ./common/allPopupWrap.html%>
+
+        <!--messageBox-->
+        <%include ./common/messageBox.html%>
+    </div>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<%include ./common/footer.html%>
