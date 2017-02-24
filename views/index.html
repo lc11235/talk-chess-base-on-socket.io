@@ -1,0 +1,69 @@
+<%include ./common/header.html%>
+    <div id="js_index_body">
+        <!--loading-->
+        <%include ./common/loading.html%>
+
+        <!--index content-->
+        <div class="index-content" v-if="!firstLoading">
+            <!--index head-->
+            <div class="index-header">
+                <i class="iconfont-githublogo"></i>
+                <span>Talk</span>
+                <div class="header-right-box">
+                    <span class="header-right-text" v-if="isLogin">欢迎：{{userName}}</span>
+                    <span class="header-right-text" v-else @click="goLogin">登录</span>
+                </div>
+            </div>
+
+            <div class="index-content-title font-size-color">
+                <span>房间列表</span>
+                <span class="title-right">在线人数：{{onLineUser}}人</span>
+            </div>
+
+            <div class="index-content-list-box" v-for="roomList in roomList" @click="goRoomPage(roomList)">
+                <div class="index-content-list">
+                    <div class="list-top">
+                        <span class="recommend">【推荐】</span>
+                        <span class="font-size-color" v-text="roomList.roomName"></span>
+                        <i class="iconfont icon-username">
+                            <span v-text="roomList.userNum"></span>
+                        </i>
+                    </div>
+                    <span class="list-detail" v-text="roomList.roomDetail"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--foot-->
+        <div class="index-footer">
+            <div class="login-foot-box">
+                <span @click="openCreateRoomDom">创建房间</span>
+            </div>
+        </div>
+
+        <%include ./common/popup.html%>
+
+        <!--popup wrap-->
+        <%include ./common/allPopupWrap.html%>
+
+        <!--messageBox-->
+        <%include ./common/messageBox.html%>
+
+        <transition name="room">
+            <div class="create-room-box" v-show="createRoom.showCreateRoom">
+                <div class="create-room-header">
+                    <span><i class="iconfont icon-create-room"></i>创建房间</span>
+                    <i class="iconfont icon-close-room" @click="closeCreateRoomDom"></i>
+                </div>
+                <input type="text" v-model="createRoom.roomName" class="create-room-name" placeholder="请输入房间名称">
+                <textarea class="create-room-detail" v-model="createRoom.roomDetail" placeholder="请输入房间介绍（最多100字）"></textarea>
+                <button type="button" class="create-room-btn" @click="goCreateRoom" v-bind="{disabled:reqLoading}">
+                    <div class="loading-box">
+                        <i class="css-loading" v-show="reqLoading"></i>
+                        <span class="css-loading-text">创建</span>
+                    </div>
+                </button>
+            </div>
+        </transition>
+    </div>
+<%include ./common/footer.html%>
