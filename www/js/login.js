@@ -6,10 +6,10 @@
  * 
  * =============================
  */
-(function(){
+(function () {
     var loginModel = new Vue({
         el: '#js_login_body',
-        data: function(){
+        data: function () {
             return {
                 firstLoading: true,
                 login: true,
@@ -24,24 +24,24 @@
                 }
             };
         },
-        mounted: function(){
+        mounted: function () {
             var uid = GZL.getCookie("uid");
-            if(uid != "undefined"){
+            if (uid != "undefined") {
                 window.location.href = 'index';
             }
             var _this = this;
-            this.$nextTick(function(){
+            this.$nextTick(function () {
                 _this.firstLoading = false;
             })
         },
         methods: {
-            toggleShow: function(){
+            toggleShow: function () {
                 this.login = !this.login;
                 this.register = !this.register;
             },
-            userLogin: function(){
+            userLogin: function () {
                 var _this = this,
-                if(this.userName && this.password){
+                if (this.userName && this.password) {
                     GZL.ajax({
                         url: GZL.CONFIG.LOGIN,
                         method: "POST",
@@ -49,42 +49,8 @@
                             userName: this.userName,
                             password: this.password
                         },
-                        success: function(result){
-                            if(result.status === 200){
-                                GZL.setCookie("uid", result.data.uid, {
-                                    expires: 24 * 7
-                                });
-                                GZL.setCookie("userName", result.data.userName, {
-                                    expires: 24 * 7
-                                });
-                                window.location.href = 'index';
-                            }
-                            else{
-                                GZL.popue(_this, result.message);
-                            }
-                        }
-                    }, _this);
-                }
-                else{
-                    if(!this.userName){
-                        GZL.popue(_this, "账号不能为空");
-                    } else if(!this.password){
-                        GZL.popue(_this, "密码不能为空");
-                    }
-                }
-            },
-            userRegister: function(){
-                var _this = this;
-                if(this.userName && this.password && this.CONFIG && this.password === this.confirmPassword){
-                    GZL.ajax({
-                        url: GZL.CONFIG.REGISTER,
-                        method: "POST",
-                        data: {
-                            userName: this.userName,
-                            password: this.password
-                        },
-                        success: function(result){
-                            if(result.status === 200){
+                        success: function (result) {
+                            if (result.status === 200) {
                                 GZL.setCookie("uid", result.data.uid, {
                                     expires: 24 * 7
                                 });
@@ -100,13 +66,47 @@
                     }, _this);
                 }
                 else {
-                    if(!this.userName){
+                    if (!this.userName) {
                         GZL.popue(_this, "账号不能为空");
-                    }
-                    else if(!this.password || !this.confirmPassword){
+                    } else if (!this.password) {
                         GZL.popue(_this, "密码不能为空");
                     }
-                    else if(this.password !== this.confirmPassword){
+                }
+            },
+            userRegister: function () {
+                var _this = this;
+                if (this.userName && this.password && this.CONFIG && this.password === this.confirmPassword) {
+                    GZL.ajax({
+                        url: GZL.CONFIG.REGISTER,
+                        method: "POST",
+                        data: {
+                            userName: this.userName,
+                            password: this.password
+                        },
+                        success: function (result) {
+                            if (result.status === 200) {
+                                GZL.setCookie("uid", result.data.uid, {
+                                    expires: 24 * 7
+                                });
+                                GZL.setCookie("userName", result.data.userName, {
+                                    expires: 24 * 7
+                                });
+                                window.location.href = 'index';
+                            }
+                            else {
+                                GZL.popue(_this, result.message);
+                            }
+                        }
+                    }, _this);
+                }
+                else {
+                    if (!this.userName) {
+                        GZL.popue(_this, "账号不能为空");
+                    }
+                    else if (!this.password || !this.confirmPassword) {
+                        GZL.popue(_this, "密码不能为空");
+                    }
+                    else if (this.password !== this.confirmPassword) {
                         GZL.popue(_this, "两次密码不相等");
                     }
                 }

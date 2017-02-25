@@ -59,7 +59,6 @@ body{
 
 .index-header i{
     display: inline-block;
-    float: left;
     padding: 0 0.5rem;
     font-size: 0.9rem;
 }
@@ -74,7 +73,6 @@ body{
 
 .title-right{
     display: inline-block;
-    float: right;
 }
 
 .index-content-list-box{
@@ -126,7 +124,6 @@ body{
 
 .list-top i{
     display: inline-block;
-    float: right;
     margin-left: 0.4rem;
     font-size: 0.55rem;
 }
@@ -175,8 +172,7 @@ body{
 }
 
 .login-foot-box span{
-    display: block;
-    box-flex: 1;
+    display: flex;
     -webkit-box-flex: 1;
     position: relative;
     font-size: 0.7rem;
@@ -223,7 +219,6 @@ body{
     height: 2rem;
     line-height: 2rem;
     display: inline-block;
-    float: right;
     padding: 0 0.5rem;
 }
 

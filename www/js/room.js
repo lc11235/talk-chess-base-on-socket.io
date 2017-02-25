@@ -7,13 +7,13 @@
  * 
  * =========================
  */
-(function(){
+(function () {
     var socket = io('ws://chat.fakerli.com:8083');
     var uid = GZL.getCookie('uid');
     var userName = GZL.getCookie('userName');
     var roomModel = new Vue({
         el: "#js_room_body",
-        data: function(){
+        data: function () {
             return {
                 firstLoading: true,
                 userNum: '',
@@ -27,17 +27,17 @@
                     rightBtnText: "确认"
                 },
                 createRoom: {
-                    showCreateRoom: false;
+                    showCreateRoom: false
                 }
             };
         },
-        mounted: function(){
+        mounted: function () {
             var _this = this;
             _this.roomName = decodeURI(GZL.GetQueryString("roomName"));
-            this.$nextTick(function(){
+            this.$nextTick(function () {
                 _this.firstLoading = false;
             });
-            socket.on('connect', function(){
+            socket.on('connect', function () {
                 socket.emit('enter', {
                     uid: uid,
                     userName: userName,
@@ -46,49 +46,49 @@
             });
 
             //做进入时其他状态console打印信息调试用
-            socket.on('enter', function(msg){
+            socket.on('enter', function (msg) {
                 console.log(msg);
                 _this.message.isShowMessageBox = true;
-                -this.message.messageText = msg;
+                _this.message.messageText = msg;
             });
 
             // 确认进入房间，页面输出信息告知其他用户
-            socket.on('enterSuccess', function(num){
+            socket.on('enterSuccess', function (num) {
                 _this.userNum = num + '人在线';
             });
 
             //接收服务端推送的用户发送消息
-            socket.on('message', function(msg, obj, isMyself, time){
+            socket.on('message', function (msg, obj, isMyself, time) {
                 _this.msgList.push({
                     msg: msg,
                     userName: obj.userName,
                     isMyself: isMyself,
                     time: time
                 });
-                _this.$nextTick(function(){
+                _this.$nextTick(function () {
                     window.scrollTo(0, document.body.scrollHeight);
                 });
             });
 
             //做进入时其他状态console打印信息调试用
-            socket.on('break', function(num){
+            socket.on('break', function (num) {
                 _this.userNum = num + "人在线";
             });
         },
-        methods:{
-            doSendMsg: function(){
-                if(this.sendMsg){
+        methods: {
+            doSendMsg: function () {
+                if (this.sendMsg) {
                     socket.emit('message', this.sendMsg);
                     this.sendMsg = "";
                 }
             },
-            goBack: function(){
+            goBack: function () {
                 window.location.href = 'index';
             },
-            cancelMessageBox: function(){
+            cancelMessageBox: function () {
                 window.location.href = 'index';
             },
-            confirmMessageBox: function(){
+            confirmMessageBox: function () {
                 window.location.href = 'index';
             }
         }
