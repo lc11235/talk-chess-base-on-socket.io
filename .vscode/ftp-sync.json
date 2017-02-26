@@ -1,0 +1,19 @@
+{
+    "remotePath": "/home/talk",
+    "host": "127.0.0.1",
+    "username": "root",
+    "password": "lc13972689057",
+    "port": 22,
+    "secure": false,
+    "protocol": "sftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ]
+}

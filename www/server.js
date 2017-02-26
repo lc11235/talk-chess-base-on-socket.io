@@ -1,6 +1,6 @@
 var app = require('../app');
 var debug = require('debug')('express-demo:server');
-var http = requie('http');
+var http = require('http');
 var config = require('../config/config.js');
 var port = config.port || '3000';
 app.set('port', port);
@@ -8,7 +8,7 @@ app.disable('x-power-by');
 
 var server = http.createServer(app);
 app.ready(server);  // room房间
-server.linten(port, function () {
+server.listen(port, function () {
     console.log("监听端口:" + port);
 });
 server.on('error', onError);

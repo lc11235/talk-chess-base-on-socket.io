@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-var db = requie('../config/mongoose.js');
+var db = require('../config/mongoose.js');
 
 //声明一个mongoose对象
 var RoomUserListSchema = new mongoose.Schema({

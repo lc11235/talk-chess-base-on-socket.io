@@ -58,3 +58,5 @@ var router = function(app, express, path){
         res.render('./error/error');
     });
 }
+
+module.exports = router;
