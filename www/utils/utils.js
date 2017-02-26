@@ -11,7 +11,7 @@ var GZL = (function (root, factory) {
      * @param {[boolean]} DEBUG  [是否开启调试模式，默认false]
      */
     factory.settings = {
-        DEBUG: false
+        DEBUG: true
     };
 
     /**
