@@ -18,7 +18,7 @@ var GZL = (function (root, factory) {
     * 借口请求配置
     */
     factory.CONFIG = {
-        BASE_API: "http://127.0.0.1:8083",
+        BASE_API: "http://127.0.0.1:8080",
         LOGIN: "/api/login",
         REGISTER: "/api/register",
         CREATEROOM: "/api/createRoom",

@@ -40,7 +40,7 @@
                 this.register = !this.register;
             },
             userLogin: function () {
-                var _this = this,
+                var _this = this;
                 if (this.userName && this.password) {
                     GZL.ajax({
                         url: GZL.CONFIG.LOGIN,

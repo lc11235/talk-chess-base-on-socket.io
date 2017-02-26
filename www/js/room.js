@@ -8,7 +8,7 @@
  * =========================
  */
 (function () {
-    var socket = io('ws://chat.fakerli.com:8083');
+    var socket = io('ws://localhost:8080');
     var uid = GZL.getCookie('uid');
     var userName = GZL.getCookie('userName');
     var roomModel = new Vue({
