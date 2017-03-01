@@ -13,8 +13,8 @@
             <ul class="room-list">
                 <li v-for="item in msgList">
                     <div v-if="!item.isMyself">
-                        <i class="iconfont icon-content"></i>
-                        <div class="room-list-content">
+                        <i class="iconfont icon-username icon-other"></i>
+                        <div class="room-list-content-other">
                             <div class="room-list-msg">
                                 <span class="msg-name" v-text="item.userName"></span>
                                 <span class="msg-time" v-text="item.time"></span>
@@ -23,10 +23,10 @@
                         </div>
                     </div>
                     <div v-else>
-                        <i class="iconfont icon-username icon-myself"></i>
-                        <div class="room-list-content content-myself">
+                        <i class="iconfont"></i>
+                        <div class="room-list-content-myself">
                             <div class="room-list-msg">
-                                <span class="msg-name">ME</span>
+                                <span class="msg-name"></span>
                                 <span class="msg-time" v-text="item.time"></span>
                             </div>
                             <div class="msg-detail" v-text="item.msg"></div>
@@ -36,8 +36,8 @@
             </ul>
 
             <div class="send-box">
-                <input type="text" placeholder="写点什么" v-model="sendMsg">
-                <button type="button" @click="doSendMsg">发送</button>
+                <input type="text" placeholder="写点什么" v-model="sendMsg" @keyup.13="doSendMsg()">
+                <button type="button" @click="doSendMsg()">发送</button>
             </div>
         </div>
 

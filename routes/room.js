@@ -89,7 +89,7 @@ router.roomSocketIo = function (server) {
                              * allUserList 所有房间在线用户信息 allUserList.push(nowConnectUser);
                              */
                             allConnectUserNum++;
-                            RoomUserInsert(roomId, nowConnectUser);
+                            roomUserInsert(roomId, nowConnectUser);
                             console.log('总在线人数' + allConnectUserNum);
                             console.log('当前房间在线人数' + roomList[roomId].length);
                         }

@@ -35,9 +35,9 @@ router.post('/createRoom', function(req, res){
             userName: req.body.userName,
             uid: req.body.uid,
             roomName: req.body.roomName,
-            roomDetail: req.bodu.roomDetail,
+            roomDetail: req.body.roomDetail,
             roomId: roomId
-        }
+        };
         var room = new RoomList(content);
         room.save(function(err){
             if(err){

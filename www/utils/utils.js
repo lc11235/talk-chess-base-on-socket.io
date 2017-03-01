@@ -86,7 +86,7 @@ var GZL = (function (root, factory) {
             if (factory.settings.DEBUG) {
                 console.error(_MODULE_NAME, "Browser not support ajax");
             }
-            xht = null;
+            xhr = null;
         }
         var type = options.method.toUpperCase();
         var random = Math.random();
@@ -152,7 +152,7 @@ var GZL = (function (root, factory) {
      * @param {[string]} value [cookie的值]
      * @param {[object]} options [可选][设置cookie相关的属性，expires：过期小时数，path：路径，domain：域名，secure：是否是安全传输]
      */
-    factory.setCookie = function (key, vlaue) {
+    factory.setCookie = function (key, value) {
         var options = null;
         if (arguments.length > 2) {
             options = arguments[2];

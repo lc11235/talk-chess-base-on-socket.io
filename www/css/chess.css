@@ -1,0 +1,87 @@
+html{
+    width: 100%;
+    min-height: 100%;
+}
+
+body{
+    width: 100%;
+    min-height: 100%;
+    background-attachment: fixed;
+    background: url(/img/index-bg.jpg) no-repeat center center/cover;
+}
+
+#js_chess_body{
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    color: #fff;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+#app {
+    text-align: center;
+}
+
+h1{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.chess{
+    margin-bottom: 1.5rem;
+    font-size: 0;
+}
+
+/*坐标*/
+i {
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: left;
+}
+
+/*白旗*/
+i.w,
+i.w::before,
+i.w::after{
+    background-color: #000;
+    border-color: #fff;
+}
+
+/*黑旗*/
+i.b,
+i.b::before,
+i.b::after{
+    background-color: #333;
+}
+
+/*横线*/
+i::before,
+i::after{
+    content: ' ';
+    position: absolute;
+    top: 1rem;
+    width: 2rem;
+    height: 0;
+    border-top: 1px solid #333;
+}
+
+/*竖线*/
+i::after{
+    top: 0;
+    right: 1rem;
+    width: 0;
+    height: 2rem;
+    border-top: 0 none;
+    border-right: 1px solid #333;
+}
+
+button{
+    margin-right: 0.25rem;
+}

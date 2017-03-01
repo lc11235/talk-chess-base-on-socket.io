@@ -1,0 +1,31 @@
+<%include ./common/header.html%>
+    <div id="js_chess_body">
+        <!--loading-->
+        <%include ./common/loading.html%>
+
+        <div id="app" v-cloak>
+            <h1>五子棋</h1>
+            <div class="chess">
+                <template v-for="(p, y) in pieces.len">
+                    <template v-for="(p, x) in pieces.len">
+                    <i :class="pieces[_cover(x)+_cover(y)]" @click="tick(x, y)"></i>
+                    <br v-if="x == pieces.len-1">
+                    </template>
+                </template>
+            </div>
+        </div>
+        <button @click="init">重新开局</button>
+        <br><br>
+        <p>本机号：{{socket.id}} (复制给其他人来连接本机)</p>
+        <input type="text" v-model="otherSid" placeholder="输入其他主机号进行连接">
+        <button @click="link">联机</button>
+
+        <!--popup wrap-->
+        <%include ./common/allPopupWrap.html%>
+
+        <!--messageBox-->
+        <%include ./common/messageBox.html%>
+    </div>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<%include ./common/footer.html%>

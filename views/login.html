@@ -17,7 +17,7 @@
                     </div>
                     <div class="login-username login-password">
                         <i class="iconfont icon-password"></i>
-                        <input type="password" class="login-input" v-model="password" maxlength="15" placeholder="请输入您的密码">
+                        <input type="password" class="login-input" v-model="password" @keyup.13="userLogin" maxlength="15" placeholder="请输入您的密码">
                     </div>
                     <button type="button" class="login-btn" @click="userLogin" v-bind="{disabled:reqLoading}">
                         <div class="login-btn-box" :class="{'btn-width':reqLoading}">

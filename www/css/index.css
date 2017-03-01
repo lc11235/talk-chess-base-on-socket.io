@@ -7,7 +7,7 @@ body{
     width: 100%;
     min-height: 100%;
     background-attachment: fixed;
-    background: url(https://imio.oss-cn-shanghai.aliyuncs.com/chat/img/index-bg.jpg) no-repeat center center/cover;
+    background: url(/img/index-bg.jpg) no-repeat center center/cover;
 }
 
 #js_index_body{
@@ -18,11 +18,11 @@ body{
 }
 
 .index-content{
-    width: 100%;
+    width: 50%;
     overflow: hidden;
     position: relative;
     z-index: 10;
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.5rem;
 }
 
 .index-header{
@@ -150,9 +150,9 @@ body{
 
 .index-footer{
     position: fixed;
-    left: 0;
+    left: 25%;
     bottom: 0;
-    width: 100%;
+    width: 50%;
     height: 2.5rem;
     z-index: 9999;
     background: rgba(50, 50, 50, 0.8);
@@ -182,7 +182,7 @@ body{
 /*create-room-dom*/
 .create-room-box{
     position: fixed;
-    width: 80%;
+    width: 50%;
     overflow: hidden;
     top: 50%;
     left: 50%;

@@ -4,7 +4,7 @@ html{
 
 body{
     background-attachment: fixed;
-    background: url(https://imio.oss-cn-shanghai.aliyuncs.com/chat/img/index-bg.jpg) no-repeat center center/cover;
+    background: url(/img/index-bg.jpg) no-repeat center center/cover;
 }
 
 #js_room_body{
@@ -13,8 +13,9 @@ body{
     color: #fff;
 }
 
-.index-content{
-    width: 100%;
+.room-content{
+    width: 50%;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     z-index: 10;
@@ -81,11 +82,18 @@ ul.room-list{
     float: left;
 }
 
-.room-list-content{
-    margin: 0 0.5rem 1rem 2rem;
+.room-list-content-other{
+    margin: 0 2rem 1rem 2rem;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 0.2rem;
     color: #f1f1f1;
+}
+
+.room-list-content-myself{
+    margin: 0 0.5rem 1rem 4rem;
+    background: #eacb20;
+    border-radius: 0.2rem;
+    color: #000;
 }
 
 .room-list-msg span{
@@ -115,17 +123,15 @@ ul.room-list{
     float: right;
 }
 
-.content-myself{
-    margin: 0 2rem 1rem 0.5rem;
-    background: #eacb20;
-    color: #000;
+.icon-other{
+    float: left;
 }
 
 .send-box{
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 25%;
+    width: 50%;
     height: 2.5rem;
     background: rgba(50, 50, 50, 0.8);
     border-top: 1px solid rgba(234, 203, 32, 0.6);

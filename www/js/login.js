@@ -32,7 +32,7 @@
             var _this = this;
             this.$nextTick(function () {
                 _this.firstLoading = false;
-            })
+            });
         },
         methods: {
             toggleShow: function () {
@@ -75,7 +75,7 @@
             },
             userRegister: function () {
                 var _this = this;
-                if (this.userName && this.password && this.CONFIG && this.password === this.confirmPassword) {
+                if (this.userName && this.password && this.confirmPassword && this.password === this.confirmPassword) {
                     GZL.ajax({
                         url: GZL.CONFIG.REGISTER,
                         method: "POST",

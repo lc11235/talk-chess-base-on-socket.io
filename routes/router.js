@@ -10,14 +10,14 @@ var router = function(app, express, path){
      * GET请求
      */
     // index首页
-    var index = require('./index');
+    var index = require('./index.js');
     app.use('/', index);
     app.use('/index', index);
     //login登录
-    var login = require('./login');
+    var login = require('./login.js');
     app.use('/login', login);
     // room 房间
-    var room = require('./room');
+    var room = require('./room.js');
     app.use('/room', room);
     app.ready = function(server){
         room.roomSocketIo(server);
@@ -29,9 +29,9 @@ var router = function(app, express, path){
      * 所有api下放到专门的api文件下
      */
 
-    var loginApi = require('./api/login');
+    var loginApi = require('./api/login.js');
     app.use('/api', loginApi);
-    var registerApi = require('./api/register');
+    var registerApi = require('./api/register.js');
     app.use('/api', registerApi);
     var createRoomApi = require('./api/createRoom.js');
     app.use('/api', createRoomApi);
@@ -53,10 +53,10 @@ var router = function(app, express, path){
         res.locals.message = err.message;
         res.locals.error = req.app.get('env') === 'development' ? err: {};
 
-        // 显示错误页面吧
+        // 显示错误页面
         res.status(err.status || 500);
         res.render('./error/error');
     });
-}
+};
 
 module.exports = router;

@@ -5,7 +5,7 @@ var db = require('../config/mongoose.js');
 //声明一个mongoose对象
 var UserSchema = new mongoose.Schema({
     userName: String,
-    passward: String,
+    password: String,
     uid: String,
     time: {
         type: Date,

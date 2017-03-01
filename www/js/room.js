@@ -8,7 +8,7 @@
  * =========================
  */
 (function () {
-    var socket = io('ws://localhost:8080');
+    var socket = io('ws://10.240.19.184:8080');
     var uid = GZL.getCookie('uid');
     var userName = GZL.getCookie('userName');
     var roomModel = new Vue({
@@ -77,7 +77,7 @@
         },
         methods: {
             doSendMsg: function () {
-                if (this.sendMsg) {
+                if (this.sendMsg && this.sendMsg.trim()!="") {
                     socket.emit('message', this.sendMsg);
                     this.sendMsg = "";
                 }
@@ -93,4 +93,4 @@
             }
         }
     });
-}());
+} ());
